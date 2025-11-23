@@ -1,1 +1,2 @@
 # ShikiBot
+Shikimori in telegram
