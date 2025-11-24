@@ -1,13 +1,14 @@
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+from aiogram import Bot, Dispatcher
+
+from dotenv import load_dotenv
+from handlers import router
+from os import getenv
 import asyncio
 import logging
 import sys
-from os import getenv
-from dotenv import load_dotenv
-from handlers import router
 
-from aiogram import Bot, Dispatcher
-from aiogram.client.default import DefaultBotProperties
-from aiogram.enums import ParseMode
 
 load_dotenv()
 

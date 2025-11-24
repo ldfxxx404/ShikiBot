@@ -13,8 +13,7 @@ router = Router()
 async def start_handler(message: Message) -> None:
     await message.answer(
         """
-/random - рандомное аниме
-/info - информация об аниме
+/random - radnom anime
 """
     )
 
@@ -26,5 +25,5 @@ async def get_random_handler(message: Message) -> None:
 
 @router.message()
 async def get_anime(message: Message):
-    name = message.text
-    await message.answer(get_anime_info(name))
+    title_name = message.text
+    await message.answer(get_anime_info(title_name))

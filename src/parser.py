@@ -1,7 +1,7 @@
-import requests
-from endpoints import GET_RANDOM_ANIME_URL, GET_ANIME_INFO_URL, SEARCH_ANIME_URL
+from endpoints import GET_RANDOM_ANIME_URL, SEARCH_ANIME_URL
 from headers import HEADERS
-# /?search={name}'
+import requests
+
 
 def fetch_random_anime_data():
     try:
@@ -13,9 +13,9 @@ def fetch_random_anime_data():
         return None
 
 
-def fetch_anime_info(name: str):
+def fetch_anime_info(title_name: str):
     try:
-        response = requests.get(f"{SEARCH_ANIME_URL}/?search={name}", headers=HEADERS)
+        response = requests.get(f"{SEARCH_ANIME_URL}/?search={title_name}", headers=HEADERS)
         response.raise_for_status()
         data = response.json()
         return data
@@ -26,10 +26,10 @@ def fetch_anime_info(name: str):
 def get_random_anime():
     data = fetch_random_anime_data()
     anime = data[0]
-    random_anime_name = anime.get("russian")
-    random_anime_url = anime.get("url")
-    random_anime_score = anime.get("score")
-    random_anime_episodes = anime.get("episodes")
+    random_anime_name = anime["russian"]
+    random_anime_url = anime["url"]
+    random_anime_score = anime["score"]
+    random_anime_episodes = anime["episodes"]
     return (
         f"Название аниме: {random_anime_name}\n\n"
         f"Эпизоды: {random_anime_episodes}\n\n"
@@ -38,8 +38,8 @@ def get_random_anime():
     )
 
 
-def get_anime_info(name):
-    data = fetch_anime_info(name)
+def get_anime_info(title_name):
+    data = fetch_anime_info(title_name)
     anime = data[0]
     anime_name = anime["russian"]
     anime_url = anime["url"]
