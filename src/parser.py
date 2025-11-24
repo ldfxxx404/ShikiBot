@@ -1,5 +1,6 @@
 import requests
 
+
 class Anime:
 
     def __init__(self, random_url, search_url, headers):
@@ -19,7 +20,7 @@ class Anime:
     def _fetch_anime_info(self, title_name: str):
         try:
             response = requests.get(
-                f"{self.random_url}/?search={title_name}", headers=self.headers
+                f"{self.search_url}/?search={title_name}", headers=self.headers
             )
             response.raise_for_status()
             data = response.json()
@@ -27,14 +28,12 @@ class Anime:
         except (requests.RequestException, ValueError):
             return None
 
-
     def get_random_anime(self):
         data = self._fetch_random_anime_data()
-        if not data:  # Проверка на None или пустой список
-            return "Не удалось получить информацию об аниме. Попробуйте позже."
+        if not data:
+            return "Unable to get information about the anime. Please try again later."
 
         anime = data[0]
-        print(anime)
         random_anime_name = anime["russian"]
         random_anime_url = anime["url"]
         random_anime_score = anime["score"]
@@ -47,14 +46,12 @@ class Anime:
             f"Ссылка: https://shikimori.one{random_anime_url}\n\n"
         )
 
-
     def get_anime_info(self, title_name):
         data = self._fetch_anime_info(title_name)
-        if not data:  # Проверка на None или пустой список
-            return f"Не удалось найти аниме '{title_name}'. Проверьте название и попробуйте снова."
+        if not data:
+            return f"The anime '{title_name}' could not be found. Please check the title and try again."
 
         anime = data[0]
-        print(anime)
         anime_name = anime["russian"]
         anime_url = anime["url"]
         anime_score = anime["score"]
