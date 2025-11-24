@@ -25,6 +25,6 @@ async def get_random_handler(message: Message) -> None:
 
 
 @router.message()
-async def get_anime(message: Message):
+async def user_input_handler(message: Message):
     title_name = message.text
     await message.answer(anime.get_anime_info(title_name))
