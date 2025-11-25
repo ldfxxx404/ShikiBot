@@ -1,30 +1,30 @@
-from endpoints import GET_RANDOM_ANIME_URL, SEARCH_ANIME_URL
-from headers import HEADERS
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 from aiogram import Router
-from parser import Anime
+from messages.start_message import StartMessage
+from messages.random_anime_message import RandomAnimeMessage
+from messages.search_anime_message import SearchAnimeMessage
+from api import ShikimoriApiClient
 
 router = Router()
-
-anime = Anime(GET_RANDOM_ANIME_URL, SEARCH_ANIME_URL, HEADERS)
 
 
 @router.message(CommandStart())
 async def start_handler(message: Message) -> None:
-    await message.answer(
-        """
-/random - radnom anime
-"""
-    )
+    text = StartMessage().generate()
+    await message.answer(text=text)
 
 
 @router.message(Command("random"))
 async def get_random_handler(message: Message) -> None:
-    await message.answer(anime.get_random_anime())
+    text = await RandomAnimeMessage(client=ShikimoriApiClient()).generate()
+    await message.answer(text=text)
 
 
 @router.message()
-async def user_input_handler(message: Message):
+async def user_input_handler(message: Message) -> None:
+    if not message.text:
+        return
     title_name = message.text
-    await message.answer(anime.get_anime_info(title_name))
+    text = await SearchAnimeMessage(client=ShikimoriApiClient()).generate(name=title_name)
+    await message.answer(text=text)
