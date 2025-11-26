@@ -13,12 +13,13 @@ class AnimeMessage:
         random_anime_url = anime["url"]
         random_anime_score = anime["score"]
         random_anime_episodes = anime["episodes"]
-
+        random_anime_id = anime['id']
         return "\n".join(
             [
                 f"{bold("Название аниме:")} {random_anime_name}",
                 f"{bold("Количество эпизодов:")} {random_anime_episodes}",
                 f"{bold("Оценка аниме:")} {random_anime_score}",
+                f"{bold("ID аниме:")} {random_anime_id}",
                 f"{bold("Ссылка:")} https://shikimori.one{random_anime_url}",
             ]
         )
