@@ -37,7 +37,7 @@ class AnimeMessage:
                 f"{bold("Название аниме:")} {similar_anime_name}",
                 f"{bold("Количество эпизодов:")} {similar_anime_episodes}",
                 f"{bold("Оценка аниме:")} {similar_anime_score}",
-                f"{bold("ID аниме:")} {similar_anime_id})",
+                f"{bold("ID аниме:")} {similar_anime_id}",
                 f"{bold("Ссылка:")} https://shikimori.one{similar_anime_url}",
             ]
         )
