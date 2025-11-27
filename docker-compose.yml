@@ -1,0 +1,10 @@
+services:
+  shikimori-bot:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: shiki
+    working_dir: /app
+    volumes:
+      - ./src:/app/src
+    command: [".Shiki/bin/python", "src/main.py"]
