@@ -10,5 +10,3 @@ COPY . .
 RUN python3 -m venv .Shiki && \
 source .Shiki/bin/activate && \ 
 pip install --no-cache -r req.txt
-
-CMD [ ".Shiki/bin/python", "src/main.py" ]
