@@ -1,5 +1,6 @@
 services:
   shikimori-bot:
+    restart: unless-stopped
     build: 
       context: .
       dockerfile: Dockerfile
