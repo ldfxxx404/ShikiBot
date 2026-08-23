@@ -1,11 +1,12 @@
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
 from aiogram import Router
-from messages.start_message import StartMessage
+from aiogram.filters import Command, CommandStart
+from aiogram.types import Message
+
+from api import ShikimoriApiClient
 from messages.random_anime_message import RandomAnimeMessage
 from messages.search_anime_message import SearchAnimeMessage
 from messages.similar_anime_message import SimilarAnimeMessage
-from api import ShikimoriApiClient
+from messages.start_message import StartMessage
 
 router = Router()
 

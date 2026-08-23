@@ -1,12 +1,28 @@
-FROM alpine:latest
+FROM alpine:latest AS builder
 
-RUN apk update && \
- apk add --no-cache python3 py3-pip
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    python3-dev \
+    build-base
 
 WORKDIR /app
 
+COPY req.txt .
+
+RUN python3 -m venv /opt/venv && \
+    /opt/venv/bin/pip install --no-cache-dir -r req.txt
+
+
+FROM alpine:latest
+
+RUN apk add --no-cache python3
+
+WORKDIR /app
+
+COPY --from=builder /opt/venv /opt/venv
 COPY . .
 
-RUN python3 -m venv .Shiki && \
-source .Shiki/bin/activate && \ 
-pip install --no-cache -r req.txt
+ENV PATH="/opt/venv/bin:$PATH"
+
+CMD ["python", "src/main.py"]

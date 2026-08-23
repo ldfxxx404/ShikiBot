@@ -1,11 +1,7 @@
 services:
   shikimori-bot:
-    restart: unless-stopped
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: shiki
-    working_dir: /app
-    volumes:
-      - ./src:/app/src
-    command: [".Shiki/bin/python", "src/main.py"]
+    restart: unless-stopped
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}

@@ -1,5 +1,6 @@
-from aiogram.utils.markdown import bold
 from random import choice
+
+from aiogram.utils.markdown import bold
 
 
 class AnimeMessage:
@@ -17,11 +18,11 @@ class AnimeMessage:
         random_anime_id = anime["id"]
         return "\n".join(
             [
-                f"{bold("Количество эпизодов:")} {random_anime_episodes}",
-                f"{bold("Название аниме:")} {random_anime_name}",
-                f"{bold("Оценка аниме:")} {random_anime_score}",
-                f"{bold("ID аниме:")} {random_anime_id}",
-                f"{bold("Ссылка:")} https://shikimori.one{random_anime_url}",
+                f"{bold('Количество эпизодов:')} {random_anime_episodes}",
+                f"{bold('Название аниме:')} {random_anime_name}",
+                f"{bold('Оценка аниме:')} {random_anime_score}",
+                f"{bold('ID аниме:')} {random_anime_id}",
+                f"{bold('Ссылка:')} https://shikimori.one{random_anime_url}",
             ]
         )
 
@@ -34,10 +35,10 @@ class AnimeMessage:
         similar_anime_id = anime["id"]
         return "\n".join(
             [
-                f"{bold("Название аниме:")} {similar_anime_name}",
-                f"{bold("Количество эпизодов:")} {similar_anime_episodes}",
-                f"{bold("Оценка аниме:")} {similar_anime_score}",
-                f"{bold("ID аниме:")} {similar_anime_id}",
-                f"{bold("Ссылка:")} https://shikimori.one{similar_anime_url}",
+                f"{bold('Название аниме:')} {similar_anime_name}",
+                f"{bold('Количество эпизодов:')} {similar_anime_episodes}",
+                f"{bold('Оценка аниме:')} {similar_anime_score}",
+                f"{bold('ID аниме:')} {similar_anime_id}",
+                f"{bold('Ссылка:')} https://shikimori.one{similar_anime_url}",
             ]
         )

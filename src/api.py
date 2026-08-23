@@ -10,33 +10,39 @@ class ShikimoriApiClient:
 
     async def get_random_anime(self):
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(
+            async with (
+                aiohttp.ClientSession() as session,
+                session.get(
                     self._get_endpoint("/api/animes"), params={"order": "random"}
-                ) as res:
-                    return await res.json()
+                ) as res,
+            ):
+                return await res.json()
         except Exception:
             return None
 
     @cached(ttl=300)
     async def search_for_anime(self, name: str):
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(
+            async with (
+                aiohttp.ClientSession() as session,
+                session.get(
                     self._get_endpoint("/api/animes"), params={"search": name}
-                ) as res:
-                    return await res.json()
+                ) as res,
+            ):
+                return await res.json()
         except Exception:
             return None
 
     async def get_similar_anime(self, anime_id: int):
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(
+            async with (
+                aiohttp.ClientSession() as session,
+                session.get(
                     self._get_endpoint(f"/api/animes{anime_id}/similar"),
                     params={"similar": anime_id},
-                ) as res:
-                    return await res.json()
+                ) as res,
+            ):
+                return await res.json()
         except Exception:
             return None
 

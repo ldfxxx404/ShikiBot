@@ -1,6 +1,3 @@
-from . import endpoints
-from . import handlers
-from . import main
-from . import headers
+from . import endpoints, handlers, headers, main
 
 __all__ = ["endpoints", "handlers", "headers", "main"]
