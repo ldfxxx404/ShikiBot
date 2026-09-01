@@ -5,7 +5,7 @@ from aiocache import cached
 class ShikimoriApiClient:
     api_url: str
 
-    def __init__(self, api_url: str = "https://shikimori.one"):
+    def __init__(self, api_url: str = "https://shikimori.io"):
         self.api_url = api_url
 
     async def get_random_anime(self):
